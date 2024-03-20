@@ -51,7 +51,7 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i < 40; ++$i) {
             $image = new Image();
-            $image->setImageData($faker->imageUrl(640, 480, 'animals'));
+            $image->setImageData($faker->image(640, 480, 'animals'));
             $manager->persist($image);
             $images[] = $image;
         }
