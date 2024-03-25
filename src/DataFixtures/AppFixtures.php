@@ -63,7 +63,6 @@ class AppFixtures extends Fixture
             $images[] = $image;
         }
 
-
         // Create 9 races
         $races = [];
 
@@ -103,12 +102,12 @@ class AppFixtures extends Fixture
         $animals = [];
 
         $leonidas = new Animal();
-        $leonidas->setName('Leonidas')  
-            ->setRace($races[3])   
-            ->setHabitat($habitats[0]) 
-            ->setState('excellente forme') 
-            ->setSize('2.5')   
-            ->setWeight('200') 
+        $leonidas->setName('Leonidas')
+            ->setRace($races[3])
+            ->setHabitat($habitats[0])
+            ->setState('excellente forme')
+            ->setSize('2.5')
+            ->setWeight('200')
             ->addImage($faker->randomElement($images));
         $manager->persist($leonidas);
         $animals[] = $leonidas;
@@ -205,10 +204,10 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i < 5; ++$i) {
             $employee = new User();
-            $employee->setEmail($faker->email)  
-                    ->setPassword($faker->password)    
-                    ->setRoles(['ROLE_EMPLOYEE'])  
-                    ->setFirstname($faker->firstName)  
+            $employee->setEmail($faker->email)
+                    ->setPassword($faker->password)
+                    ->setRoles(['ROLE_EMPLOYEE'])
+                    ->setFirstname($faker->firstName)
                     ->setLastname($faker->lastName);
             $manager->persist($employee);
             $employees[] = $employee;

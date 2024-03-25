@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Repository\ImageRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ImageRepository::class)]
@@ -16,12 +15,11 @@ class Image
     #[ORM\Column]
     private ?int $id = null;
 
-     #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255)]
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
     private ?string $imagePath = null;
-
 
     /**
      * @var Collection<int, Service>
@@ -40,6 +38,7 @@ class Image
      */
     #[ORM\ManyToMany(targetEntity: Animal::class, mappedBy: 'images')]
     private Collection $animals;
+
     public function __construct()
     {
         $this->services = new ArrayCollection();
@@ -52,7 +51,7 @@ class Image
         return $this->id;
     }
 
-        public function getTitle(): ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -157,7 +156,7 @@ class Image
         return $this;
     }
 
-       public function __toString(): string
+    public function __toString(): string
     {
         return $this->getTitle();
     }
