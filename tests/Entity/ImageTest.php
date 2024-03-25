@@ -14,10 +14,13 @@ class ImageTest extends TestCase
     {
         $image = new Image();
         $imageData = '...'; // Set the image data here
+        $title = 'Title';
 
+        $image->setTitle($title);
         $image->setImageData($imageData);
 
         $this->assertSame($imageData, $image->getImageData());
+        $this->assertSame($title, $image->getTitle());
     }
 
     public function testAddRemoveService()

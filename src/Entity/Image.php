@@ -16,8 +16,12 @@ class Image
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::BLOB)]
-    private mixed $imageData;
+     #[ORM\Column(length: 255)]
+    private ?string $title = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imagePath = null;
+
 
     /**
      * @var Collection<int, Service>
@@ -36,7 +40,6 @@ class Image
      */
     #[ORM\ManyToMany(targetEntity: Animal::class, mappedBy: 'images')]
     private Collection $animals;
-
     public function __construct()
     {
         $this->services = new ArrayCollection();
@@ -49,14 +52,26 @@ class Image
         return $this->id;
     }
 
-    public function getImageData(): mixed
+        public function getTitle(): ?string
     {
-        return $this->imageData;
+        return $this->title;
     }
 
-    public function setImageData(mixed $imageData): static
+    public function setTitle(string $title): static
     {
-        $this->imageData = $imageData;
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getImagePath(): ?string
+    {
+        return $this->imagePath;
+    }
+
+    public function setImagePath(string $imagePath): static
+    {
+        $this->imagePath = $imagePath;
 
         return $this;
     }
@@ -140,5 +155,10 @@ class Image
         }
 
         return $this;
+    }
+
+       public function __toString(): string
+    {
+        return $this->getTitle();
     }
 }

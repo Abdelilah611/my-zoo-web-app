@@ -10,11 +10,11 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240314184810 extends AbstractMigration
+final class Version20240320230056 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Create entities Animal, FoodConsumption, Habitat, Image, OpeningHour, Review, Service, User, VeterinaryReport and their relationships.';
+        return 'Create Animal, FoodConsumption, Habitat, Image, OpeningHour, Race, Review, Role, Service, User, VeterinaryReport entities and their relationships.';
     }
 
     public function up(Schema $schema): void
@@ -25,7 +25,9 @@ final class Version20240314184810 extends AbstractMigration
         $this->addSql('CREATE SEQUENCE habitat_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE image_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE opening_hour_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE race_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE review_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE role_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE service_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE "user_id_seq" INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE veterinary_report_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
@@ -42,9 +44,11 @@ final class Version20240314184810 extends AbstractMigration
         $this->addSql('CREATE TABLE habitat_image (habitat_id INT NOT NULL, image_id INT NOT NULL, PRIMARY KEY(habitat_id, image_id))');
         $this->addSql('CREATE INDEX IDX_9AD7E031AFFE2D26 ON habitat_image (habitat_id)');
         $this->addSql('CREATE INDEX IDX_9AD7E0313DA5256D ON habitat_image (image_id)');
-        $this->addSql('CREATE TABLE image (id INT NOT NULL, image_data BYTEA NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE image (id INT NOT NULL, title VARCHAR(255) NOT NULL, image_path VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE opening_hour (id INT NOT NULL, day VARCHAR(255) NOT NULL, open TIME(0) WITHOUT TIME ZONE NOT NULL, close TIME(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE race (id INT NOT NULL, label VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE review (id INT NOT NULL, pseudo VARCHAR(255) NOT NULL, comment TEXT NOT NULL, is_visible BOOLEAN NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE role (id INT NOT NULL, label VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE service (id INT NOT NULL, label VARCHAR(255) NOT NULL, description TEXT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE service_image (service_id INT NOT NULL, image_id INT NOT NULL, PRIMARY KEY(service_id, image_id))');
         $this->addSql('CREATE INDEX IDX_6C4FE9B8ED5CA9E6 ON service_image (service_id)');
@@ -54,6 +58,21 @@ final class Version20240314184810 extends AbstractMigration
         $this->addSql('CREATE TABLE veterinary_report (id INT NOT NULL, veterinary_id INT NOT NULL, animal_id INT NOT NULL, date DATE NOT NULL, detail TEXT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_53C7E56BD954EB99 ON veterinary_report (veterinary_id)');
         $this->addSql('CREATE INDEX IDX_53C7E56B8E962C16 ON veterinary_report (animal_id)');
+        $this->addSql('CREATE TABLE messenger_messages (id BIGSERIAL NOT NULL, body TEXT NOT NULL, headers TEXT NOT NULL, queue_name VARCHAR(190) NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, available_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, delivered_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE INDEX IDX_75EA56E0FB7336F0 ON messenger_messages (queue_name)');
+        $this->addSql('CREATE INDEX IDX_75EA56E0E3BD61CE ON messenger_messages (available_at)');
+        $this->addSql('CREATE INDEX IDX_75EA56E016BA31DB ON messenger_messages (delivered_at)');
+        $this->addSql('COMMENT ON COLUMN messenger_messages.created_at IS \'(DC2Type:datetime_immutable)\'');
+        $this->addSql('COMMENT ON COLUMN messenger_messages.available_at IS \'(DC2Type:datetime_immutable)\'');
+        $this->addSql('COMMENT ON COLUMN messenger_messages.delivered_at IS \'(DC2Type:datetime_immutable)\'');
+        $this->addSql('CREATE OR REPLACE FUNCTION notify_messenger_messages() RETURNS TRIGGER AS $$
+            BEGIN
+                PERFORM pg_notify(\'messenger_messages\', NEW.queue_name::text);
+                RETURN NEW;
+            END;
+        $$ LANGUAGE plpgsql;');
+        $this->addSql('DROP TRIGGER IF EXISTS notify_trigger ON messenger_messages;');
+        $this->addSql('CREATE TRIGGER notify_trigger AFTER INSERT OR UPDATE ON messenger_messages FOR EACH ROW EXECUTE PROCEDURE notify_messenger_messages();');
         $this->addSql('ALTER TABLE animal ADD CONSTRAINT FK_6AAB231F6E59D40D FOREIGN KEY (race_id) REFERENCES race (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE animal ADD CONSTRAINT FK_6AAB231FAFFE2D26 FOREIGN KEY (habitat_id) REFERENCES habitat (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE animal_image ADD CONSTRAINT FK_E4CEDDAB8E962C16 FOREIGN KEY (animal_id) REFERENCES animal (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
@@ -77,7 +96,9 @@ final class Version20240314184810 extends AbstractMigration
         $this->addSql('DROP SEQUENCE habitat_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE image_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE opening_hour_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE race_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE review_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE role_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE service_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE "user_id_seq" CASCADE');
         $this->addSql('DROP SEQUENCE veterinary_report_id_seq CASCADE');
@@ -100,10 +121,13 @@ final class Version20240314184810 extends AbstractMigration
         $this->addSql('DROP TABLE habitat_image');
         $this->addSql('DROP TABLE image');
         $this->addSql('DROP TABLE opening_hour');
+        $this->addSql('DROP TABLE race');
         $this->addSql('DROP TABLE review');
+        $this->addSql('DROP TABLE role');
         $this->addSql('DROP TABLE service');
         $this->addSql('DROP TABLE service_image');
         $this->addSql('DROP TABLE "user"');
         $this->addSql('DROP TABLE veterinary_report');
+        $this->addSql('DROP TABLE messenger_messages');
     }
 }
