@@ -27,9 +27,9 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i < 5; ++$i) {
             $review = new Review();
-            $review->setPseudo($faker->name);
-            $review->setComment($faker->text(60));
-            $review->setIsVisible($faker->boolean(70));
+            $review->setPseudo($faker->name)
+                ->setComment($faker->text(60))
+                ->setIsVisible($faker->boolean(70));
             $manager->persist($review);
             $reviews[] = $review;
         }
@@ -39,19 +39,21 @@ class AppFixtures extends Fixture
 
         foreach (['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'] as $day) {
             $openingHour = new OpeningHour();
-            $openingHour->setDay($day);
-            $openingHour->setOpen(new \DateTime($faker->time('08:00:00')));
-            $openingHour->setClose(new \DateTime($faker->time('18:00:00')));
+            $openingHour->setDay($day)
+                    ->setOpen(new \DateTime($faker->time('08:00:00')))
+                    ->setClose(new \DateTime($faker->time('18:00:00')));
             $manager->persist($openingHour);
             $openingHours[] = $openingHour;
         }
 
         // Create 40 images
         $images = [];
+        $animalNames = ['leonidas', 'ezra', 'grace', 'indira', 'maya', 'zephyr', 'aria', 'galen', 'osiris'];
 
-        for ($i = 0; $i < 40; ++$i) {
+        foreach ($animalNames as $name) {
             $image = new Image();
-            $image->setImageData($faker->imageUrl(640, 480, 'animals'));
+            $image->setImagePath('images/'.$name.'.png')
+                ->setTitle($name);
             $manager->persist($image);
             $images[] = $image;
         }
@@ -71,10 +73,10 @@ class AppFixtures extends Fixture
 
         foreach (['savane', 'jungle', 'marais'] as $name) {
             $habitat = new Habitat();
-            $habitat->setLabel($name);
-            $habitat->setDescription($faker->text(100));
-            $habitat->setHabitComment($faker->text(50));
-            $habitat->addImage($faker->randomElement($images));
+            $habitat->setLabel($name)
+                ->setDescription($faker->text(100))
+                ->setHabitComment($faker->text(50))
+                ->addImage($faker->randomElement($images));
             $manager->persist($habitat);
             $habitats[] = $habitat;
         }
@@ -84,9 +86,9 @@ class AppFixtures extends Fixture
 
         foreach (['gastronomie en milieu sauvage', 'visites guidées des habitats', 'visites à bord du arc-Express'] as $label) {
             $service = new Service();
-            $service->setLabel($label);
-            $service->setDescription($faker->text(100));
-            $service->addImage($faker->randomElement($images));
+            $service->setLabel($label)
+                ->setDescription($faker->text(100))
+                ->addImage($faker->randomElement($images));
             $manager->persist($service);
             $services[] = $service;
         }
@@ -95,101 +97,100 @@ class AppFixtures extends Fixture
         $animals = [];
 
         $leonidas = new Animal();
-        $leonidas->setName('Leonidas');
-        $leonidas->setRace($races[3]);
-        $leonidas->setHabitat($habitats[0]);
-        $leonidas->setState('excellente forme');
-        $leonidas->setSize('2.5');
-        $leonidas->setWeight('200');
-        $leonidas->addImage($faker->randomElement($images));
+        $leonidas->setName('Leonidas')
+            ->setRace($races[3])
+            ->setHabitat($habitats[0])
+            ->setState('excellente forme')
+            ->setSize('2.5')
+            ->setWeight('200')
+            ->addImage($images[0]);
         $manager->persist($leonidas);
         $animals[] = $leonidas;
 
         $ezra = new Animal();
-        $ezra->setName('Ezra');
-        $ezra->setRace($races[4]);
-        $ezra->setHabitat($habitats[0]);
-        $ezra->setState('excellente forme');
-        $ezra->setSize('3.5');
-        $ezra->setWeight('4000');
-        $ezra->addImage($faker->randomElement($images));
+        $ezra->setName('Ezra')
+            ->setRace($races[4])
+            ->setHabitat($habitats[0])
+            ->setState('excellente forme')
+            ->setSize('3.5')
+            ->setWeight('4000')
+            ->addImage($images[1]);
         $manager->persist($ezra);
         $animals[] = $ezra;
 
         $grace = new Animal();
-        $grace->setName('Grace');
-        $grace->setRace($races[5]);
-        $grace->setHabitat($habitats[0]);
-        $grace->setState('bonne forme');
-        $grace->setSize('5.5');
-        $grace->setWeight('900');
-        $grace->addImage($faker->randomElement($images));
+        $grace->setName('Grace')
+            ->setRace($races[5])
+            ->setHabitat($habitats[0])
+            ->setState('bonne forme')
+            ->setSize('5.5')
+            ->setWeight('900')
+            ->addImage($images[2]);
         $manager->persist($grace);
         $animals[] = $grace;
 
         $indira = new Animal();
-        $indira->setName('Indira');
-        $indira->setRace($races[0]);
-        $indira->setHabitat($habitats[1]);
-        $indira->setState('excellente forme');
-        $indira->setSize('2.5');
-        $indira->setWeight('180');
-        $indira->addImage($faker->randomElement($images));
+        $indira->setName('Indira')
+            ->setRace($races[0])
+            ->setHabitat($habitats[1])
+            ->setState('excellente forme')
+            ->setSize('2.5')
+            ->setWeight('180')
+            ->addImage($images[3]);
         $manager->persist($indira);
         $animals[] = $indira;
 
         $maya = new Animal();
-        $maya->setName('Maya');
-        $maya->setRace($races[1]);
-        $maya->setHabitat($habitats[1]);
-        $maya->setState('bonne forme');
-        $maya->setSize('0.80');
-        $maya->setWeight('1');
-        $maya->addImage($faker->randomElement($images));
-        $manager->persist($maya);
+        $maya->setName('Maya')
+            ->setRace($races[1])
+            ->setHabitat($habitats[1])
+            ->setState('bonne forme')
+            ->setSize('0.80')
+            ->setWeight('1')
+            ->addImage($images[4]);
         $animals[] = $maya;
 
         $zephyr = new Animal();
-        $zephyr->setName('zephyr');
-        $zephyr->setRace($races[2]);
-        $zephyr->setHabitat($habitats[1]);
-        $zephyr->setState('excellente forme');
-        $zephyr->setSize('0.50');
-        $zephyr->setWeight('0.5');
-        $zephyr->addImage($faker->randomElement($images));
+        $zephyr->setName('zephyr')
+            ->setRace($races[2])
+            ->setHabitat($habitats[1])
+            ->setState('excellente forme')
+            ->setSize('0.50')
+            ->setWeight('0.5')
+            ->addImage($images[5]);
         $manager->persist($zephyr);
         $animals[] = $zephyr;
 
         $aria = new Animal();
-        $aria->setName('Aria');
-        $aria->setRace($races[6]);
-        $aria->setHabitat($habitats[2]);
-        $aria->setState('bonne forme');
-        $aria->setSize('1.2');
-        $aria->setWeight('3');
-        $aria->addImage($images[array_rand($images)]);
+        $aria->setName('Aria')
+            ->setRace($races[6])
+            ->setHabitat($habitats[2])
+            ->setState('bonne forme')
+            ->setSize('1.2')
+            ->setWeight('3')
+            ->addImage($images[6]);
         $manager->persist($aria);
         $animals[] = $aria;
 
         $galen = new Animal();
-        $galen->setName('Galen');
-        $galen->setRace($races[7]);
-        $galen->setHabitat($habitats[2]);
-        $galen->setState('excellente forme');
-        $galen->setSize('1.8');
-        $galen->setWeight('160');
-        $galen->addImage($images[array_rand($images)]);
+        $galen->setName('Galen')
+            ->setRace($races[7])
+            ->setHabitat($habitats[2])
+            ->setState('excellente forme')
+            ->setSize('1.8')
+            ->setWeight('160')
+            ->addImage($images[7]);
         $manager->persist($galen);
         $animals[] = $galen;
 
         $osiris = new Animal();
-        $osiris->setName('Osiris');
-        $osiris->setRace($races[8]);
-        $osiris->setHabitat($habitats[2]);
-        $osiris->setState('excellente forme');
-        $osiris->setSize('1.5');
-        $osiris->setWeight('5');
-        $osiris->addImage($images[array_rand($images)]);
+        $osiris->setName('Osiris')
+            ->setRace($races[8])
+            ->setHabitat($habitats[2])
+            ->setState('excellente forme')
+            ->setSize('1.5')
+            ->setWeight('5')
+            ->addImage($images[8]);
         $manager->persist($osiris);
         $animals[] = $osiris;
 
@@ -198,11 +199,11 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i < 5; ++$i) {
             $employee = new User();
-            $employee->setEmail($faker->email);
-            $employee->setPassword($faker->password);
-            $employee->setRoles(['ROLE_EMPLOYEE']);
-            $employee->setFirstname($faker->firstName);
-            $employee->setLastname($faker->lastName);
+            $employee->setEmail($faker->email)
+                    ->setPassword($faker->password)
+                    ->setRoles(['ROLE_EMPLOYEE'])
+                    ->setFirstname($faker->firstName)
+                    ->setLastname($faker->lastName);
             $manager->persist($employee);
             $employees[] = $employee;
         }
@@ -226,10 +227,17 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i < 5; ++$i) {
             $foodConsumption = new FoodConsumption();
-            $foodConsumption->setAnimal($faker->randomElement($animals));
-            $foodConsumption->setDetail($faker->text(50));
-            $foodConsumption->setDate($faker->dateTimeBetween('-1 month', 'now'));
-            $foodConsumption->setEmployee($faker->randomElement($employees));
+
+            // Get or create a random animal
+            $animal = $faker->randomElement($animals);
+            if (!$animal->getId()) {
+                $manager->persist($animal);
+            }
+
+            $foodConsumption->setAnimal($animal)
+                ->setDetail($faker->text(50))
+                ->setDate($faker->dateTimeBetween('-1 month', 'now'))
+                ->setEmployee($faker->randomElement($employees));
             $manager->persist($foodConsumption);
             $foodConsumptions[] = $foodConsumption;
         }
@@ -237,12 +245,21 @@ class AppFixtures extends Fixture
         // Create 5 Veterinary Reports
         $veterinaryReports = [];
 
+        $veterinaryReports = [];
+
         for ($i = 0; $i < 5; ++$i) {
             $veterinaryReport = new VeterinaryReport();
-            $veterinaryReport->setAnimal($faker->randomElement($animals));
-            $veterinaryReport->setDetail($faker->text(50));
-            $veterinaryReport->setDate($faker->dateTimeBetween('-1 month', 'now'));
-            $veterinaryReport->setVeterinary($faker->randomElement($veterinaries));
+
+            // Get or create a random animal
+            $animal = $faker->randomElement($animals);
+            if (!$animal->getId()) {
+                $manager->persist($animal);
+            }
+
+            $veterinaryReport->setAnimal($animal)
+                ->setDetail($faker->text(50))
+                ->setDate($faker->dateTimeBetween('-1 month', 'now'))
+                ->setVeterinary($faker->randomElement($veterinaries));
             $manager->persist($veterinaryReport);
             $veterinaryReports[] = $veterinaryReport;
         }

@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Repository\ImageRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ImageRepository::class)]
@@ -16,8 +15,11 @@ class Image
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::BLOB)]
-    private mixed $imageData;
+    #[ORM\Column(length: 255)]
+    private ?string $title = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imagePath = null;
 
     /**
      * @var Collection<int, Service>
@@ -49,14 +51,26 @@ class Image
         return $this->id;
     }
 
-    public function getImageData(): mixed
+    public function getTitle(): ?string
     {
-        return $this->imageData;
+        return $this->title;
     }
 
-    public function setImageData(mixed $imageData): static
+    public function setTitle(string $title): static
     {
-        $this->imageData = $imageData;
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getImagePath(): ?string
+    {
+        return $this->imagePath;
+    }
+
+    public function setImagePath(string $imagePath): static
+    {
+        $this->imagePath = $imagePath;
 
         return $this;
     }
@@ -140,5 +154,10 @@ class Image
         }
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getTitle();
     }
 }

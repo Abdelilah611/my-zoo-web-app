@@ -42,4 +42,13 @@ class VeterinaryReport
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        // Format the message as "[date] - [animal]"
+        $formattedDate = $this->getDate()->format('Y-m-d');
+        $animalName = $this->getAnimal()->getName();
+
+        return sprintf('%s - %s', $formattedDate, $animalName);
+    }
 }
