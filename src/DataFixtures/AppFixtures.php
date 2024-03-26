@@ -48,17 +48,12 @@ class AppFixtures extends Fixture
 
         // Create 40 images
         $images = [];
+        $animalNames = ['leonidas', 'ezra', 'grace', 'indira', 'maya', 'zephyr', 'aria', 'galen', 'osiris'];
 
-        for ($i = 0; $i < 40; ++$i) {
+        foreach ($animalNames as $name) {
             $image = new Image();
-
-            // Generate a fake image file path
-            $imageFilePath = $faker->image('public/images', 640, 480, 'animals');
-
-            // Set the image file path
-            $image->setImagePath($imageFilePath)
-                ->setTitle($faker->sentence(3));
-
+            $image->setImagePath('images/'.$name.'.png')
+                ->setTitle($name);
             $manager->persist($image);
             $images[] = $image;
         }
@@ -108,7 +103,7 @@ class AppFixtures extends Fixture
             ->setState('excellente forme')
             ->setSize('2.5')
             ->setWeight('200')
-            ->addImage($faker->randomElement($images));
+            ->addImage($images[0]);
         $manager->persist($leonidas);
         $animals[] = $leonidas;
 
@@ -119,7 +114,7 @@ class AppFixtures extends Fixture
             ->setState('excellente forme')
             ->setSize('3.5')
             ->setWeight('4000')
-            ->addImage($faker->randomElement($images));
+            ->addImage($images[1]);
         $manager->persist($ezra);
         $animals[] = $ezra;
 
@@ -130,7 +125,7 @@ class AppFixtures extends Fixture
             ->setState('bonne forme')
             ->setSize('5.5')
             ->setWeight('900')
-            ->addImage($faker->randomElement($images));
+            ->addImage($images[2]);
         $manager->persist($grace);
         $animals[] = $grace;
 
@@ -141,7 +136,7 @@ class AppFixtures extends Fixture
             ->setState('excellente forme')
             ->setSize('2.5')
             ->setWeight('180')
-            ->addImage($faker->randomElement($images));
+            ->addImage($images[3]);
         $manager->persist($indira);
         $animals[] = $indira;
 
@@ -152,7 +147,7 @@ class AppFixtures extends Fixture
             ->setState('bonne forme')
             ->setSize('0.80')
             ->setWeight('1')
-            ->addImage($faker->randomElement($images));
+            ->addImage($images[4]);
         $animals[] = $maya;
 
         $zephyr = new Animal();
@@ -162,7 +157,7 @@ class AppFixtures extends Fixture
             ->setState('excellente forme')
             ->setSize('0.50')
             ->setWeight('0.5')
-            ->addImage($faker->randomElement($images));
+            ->addImage($images[5]);
         $manager->persist($zephyr);
         $animals[] = $zephyr;
 
@@ -173,7 +168,7 @@ class AppFixtures extends Fixture
             ->setState('bonne forme')
             ->setSize('1.2')
             ->setWeight('3')
-            ->addImage($faker->randomElement($images));
+            ->addImage($images[6]);
         $manager->persist($aria);
         $animals[] = $aria;
 
@@ -184,7 +179,7 @@ class AppFixtures extends Fixture
             ->setState('excellente forme')
             ->setSize('1.8')
             ->setWeight('160')
-            ->addImage($faker->randomElement($images));
+            ->addImage($images[7]);
         $manager->persist($galen);
         $animals[] = $galen;
 
@@ -195,7 +190,7 @@ class AppFixtures extends Fixture
             ->setState('excellente forme')
             ->setSize('1.5')
             ->setWeight('5')
-            ->addImage($faker->randomElement($images));
+            ->addImage($images[8]);
         $manager->persist($osiris);
         $animals[] = $osiris;
 
@@ -232,7 +227,14 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i < 5; ++$i) {
             $foodConsumption = new FoodConsumption();
-            $foodConsumption->setAnimal($faker->randomElement($animals))
+
+            // Get or create a random animal
+            $animal = $faker->randomElement($animals);
+            if (!$animal->getId()) {
+                $manager->persist($animal);
+            }
+
+            $foodConsumption->setAnimal($animal)
                 ->setDetail($faker->text(50))
                 ->setDate($faker->dateTimeBetween('-1 month', 'now'))
                 ->setEmployee($faker->randomElement($employees));
@@ -243,9 +245,18 @@ class AppFixtures extends Fixture
         // Create 5 Veterinary Reports
         $veterinaryReports = [];
 
+        $veterinaryReports = [];
+
         for ($i = 0; $i < 5; ++$i) {
             $veterinaryReport = new VeterinaryReport();
-            $veterinaryReport->setAnimal($faker->randomElement($animals))
+
+            // Get or create a random animal
+            $animal = $faker->randomElement($animals);
+            if (!$animal->getId()) {
+                $manager->persist($animal);
+            }
+
+            $veterinaryReport->setAnimal($animal)
                 ->setDetail($faker->text(50))
                 ->setDate($faker->dateTimeBetween('-1 month', 'now'))
                 ->setVeterinary($faker->randomElement($veterinaries));
