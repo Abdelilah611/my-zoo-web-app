@@ -35,4 +35,13 @@ class RaceTest extends TestCase
         $this->assertFalse($race->getAnimals()->contains($animal));
         $this->assertNull($animal->getRace());
     }
+
+    public function testToString()
+    {
+        $race = new Race();
+        $race->setLabel('Lion');
+
+        $this->assertSame('Lion', (string) $race);
+    }
+    
 }
