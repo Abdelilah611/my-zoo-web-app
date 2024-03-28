@@ -6,6 +6,7 @@ use App\Entity\Animal;
 use App\Entity\FoodConsumption;
 use App\Entity\Habitat;
 use App\Entity\Image;
+use App\Entity\Invitation;
 use App\Entity\OpeningHour;
 use App\Entity\Race;
 use App\Entity\Review;
@@ -40,6 +41,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToCrud('Animaux', 'fa fa-paw', Animal::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-users', User::class);
+        yield MenuItem::linkToCrud('Invitations', 'fa fa-envelope', Invitation::class);
         yield MenuItem::linkToCrud('Roles', 'fa fa-lock', Role::class);
         yield MenuItem::linkToCrud('Fiches vétérinaires', 'fa fa-file-medical', VeterinaryReport::class);
         yield MenuItem::linkToCrud('Consommation de nourriture', 'fas fa-drumstick-bite', FoodConsumption::class);

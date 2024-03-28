@@ -50,4 +50,18 @@ class FoodConsumptionTest extends TestCase
 
         $this->assertSame($animal, $foodCon->getAnimal());
     }
+
+    public function testToString()
+    {
+        $foodCon = new FoodConsumption();
+        $animal = new Animal();
+        $animal->setName('Lion');
+        $foodCon->setAnimal($animal);
+        $date = new \DateTime('2022-01-01');
+        $foodCon->setDate($date);
+
+        $expectedString = '2022-01-01 - Lion';
+        $this->assertSame($expectedString, (string) $foodCon);
+    }
+    
 }

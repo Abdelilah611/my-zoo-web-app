@@ -57,4 +57,13 @@ class ServiceTest extends TestCase
         $service = new Service();
         $this->assertNull($service->getId());
     }
+
+    public function testToString()
+    {
+        $service = new Service();
+        $service->setLabel('Test Label');
+
+        $this->assertSame('Test Label', (string) $service);
+    }
+    
 }

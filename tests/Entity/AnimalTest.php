@@ -128,4 +128,16 @@ class AnimalTest extends TestCase
         $animal = new Animal();
         $this->assertNull($animal->getId());
     }
+
+    public function testToString()
+    {
+        $animal = new Animal();
+        $race = new Race();
+        $animal->setName('Lion');
+        $animal->setRace($race);
+        $race->setLabel('Lion');
+
+        $this->assertSame('Lion - Lion', (string) $animal);
+    }
+
 }

@@ -67,4 +67,13 @@ class HabitatTest extends TestCase
         $habitat = new Habitat();
         $this->assertNull($habitat->getId());
     }
+
+    public function testToString()
+    {
+        $habitat = new Habitat();
+        $habitat->setLabel('Forest');
+
+        $this->assertSame('Forest', (string) $habitat);
+    }
+    
 }
