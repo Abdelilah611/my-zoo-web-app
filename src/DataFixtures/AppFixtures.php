@@ -144,10 +144,11 @@ class AppFixtures extends Fixture
         $maya->setName('Maya')
             ->setRace($races[1])
             ->setHabitat($habitats[1])
-            ->setState('bonne forme')
+            ->setState('en forme')
             ->setSize('0.80')
             ->setWeight('1')
             ->addImage($images[4]);
+        $manager->persist($maya);
         $animals[] = $maya;
 
         $zephyr = new Animal();
