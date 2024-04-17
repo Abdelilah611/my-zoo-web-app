@@ -6,9 +6,8 @@ class Button
 {
     public string $text;
 
-    public function __construct(string $text, string $type = '')
+    public function __construct(string $text = '')
     {
         $this->text = $text;
     }
 }
- 
