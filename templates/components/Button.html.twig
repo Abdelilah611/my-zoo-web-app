@@ -1,5 +1,31 @@
-{# templates/components/Button.html.twig #}
+{# Define button classes #}
+{% set buttonClasses = [
+    'font-bold',
+    'rounded',
+    'shadow-[1px_2px_5px_0px_rgba(0,0,0,0.35)]',
+    'max-w-fit',
+    'border-[1px]',
+    'backdrop-blur-sm',
+    size == 'small' ? 'text-sm py-2 px-3' : '',
+    size == 'medium' ? 'text-base py-3 px-5' : '',
+    size == 'large' ? 'text-xl py-5 px-8' : '',
+] %}
 
-<button class="font-bold text-[#1F5906] rounded-lg border-[1px] border-[#1F5906] bg-[#1F5906] bg-opacity-[1px] backdrop-blur-sm px-5 py-2 max-w-fit shadow-md">
+{# Define conditional button classes based on whether it's a CTA and color type #}
+{% if isCta %}
+    {% set bgColor = isPrimary ? 'bg-primGreen' : 'bg-secBrown' %}
+    {% set borderColor = isPrimary ? 'border-primGreen' : 'border-secBrown' %}
+    {% set textColor = 'text-myWhite' %}
+{% else %}
+    {% set bgColor = isPrimary ? 'bg-primGreen/[0.02]' : 'bg-secBrown/[0.02]' %}
+    {% set borderColor = isPrimary ? 'border-primGreen' : 'border-secBrown' %}
+    {% set textColor = labelColor == 'white' ? 'text-myWhite' : isPrimary ? 'text-primGreen' : 'text-secBrown' %}
+{% endif %}
+
+{# Merge the previoius classes with default classes #}
+{% set buttonClasses = buttonClasses|merge([bgColor, borderColor, textColor]) %}
+
+{# Render the button #}
+<button class="{{ buttonClasses|join(' ') }}">
     {{ text }}
 </button>
