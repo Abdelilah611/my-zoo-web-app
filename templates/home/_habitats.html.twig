@@ -1,6 +1,6 @@
 <!-- Habitats Section -->
 <section 
-    class="py-20 flex flex-col justify-center"
+    class="py-20 flex flex-col justify-center md:py-32"
     style='background: rgb(252,251,247);
         background: -moz-linear-gradient(180deg, rgba(252,251,247,1) 0%, rgba(247,234,225,1) 10%, rgba(247,234,225,1) 90%, rgba(252,251,247,1) 100%);
         background: -webkit-linear-gradient(180deg, rgba(252,251,247,1) 0%, rgba(247,234,225,1) 10%, rgba(247,234,225,1) 90%, rgba(252,251,247,1) 100%);
@@ -24,7 +24,7 @@
             <h3 class="font-header text-[#FAD5BB] self-center text-[28px] sm:text-[40px] tracking-[0.01em]">Biôme Jungle</h3>
             <p class="self-center text-center text-xl font-semibold tracking-wide">Plongez au cœur de la splendeur verdoyante</p>
             <div class="flex flex-row justify-center pt-5 text-[#FCFBF7]">
-                {{ component('Button', {text: 'Je découvre la Jungle'}) }}
+                {{ component('Button', {text: 'Je découvre la jungle', size:'medium', isPrimary: true, isCta: true, labelColor: ''}) }}
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
             <h3 class="font-header text-[#FAD5BB] self-center text-[28px] sm:text-[40px] tracking-[0.01em]">Biôme Savane</h3>
             <p class="self-center text-center text-xl font-semibold tracking-wide">Là où les horizons sans fin rencontrent une beauté indomptée</p>
             <div class="flex flex-row justify-center pt-5 text-[#FCFBF7]">
-                {{ component('Button', {text: 'Je découvre la Savane'}) }}
+                {{ component('Button', {text: 'Je découvre la Savane', size:'medium', isPrimary: true, isCta: true, labelColor: ''}) }}
             </div>
         </div>
         
@@ -59,7 +59,7 @@
             <h3 class="font-header text-[#FAD5BB] self-center text-[28px] sm:text-[40px] tracking-[0.01em]">Biôme Marais</h3>
             <p class="self-center text-center text-xl font-semibold tracking-wide">Explorez l'équilibre délicat de la nature au cœur du marais</p>
             <div class="flex flex-row justify-center pt-5 text-[#FCFBF7]">
-                {{ component('Button', {text: 'Je découvre les Marais'}) }}
+                {{ component('Button', {text: 'Je découvre les Marais', size:'medium', isPrimary: true, isCta: true, labelColor: ''}) }}
             </div>
         </div>
     </div>

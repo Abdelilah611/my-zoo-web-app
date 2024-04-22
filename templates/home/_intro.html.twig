@@ -1,5 +1,5 @@
 <!-- Introduction Section -->
-<section class="py-20 px-8 sm:px-32 space-y-10 flex flex-col justify-center">
+<section class="py-20 px-8 sm:px-32 space-y-10 flex flex-col justify-center md:pt-64 md:pb-32">
     <div class="space-y-8 max-w-[792px] flex flex-col self-center">
         <h2 class="font-header text-[40px] leading-[48px] text-center text-[#73370D] capitalize sm:text-6xl"> Bienvenue au zoo d'Arcadia </h2>
         <p class="">
@@ -7,6 +7,6 @@
         </p>
     </div>
     <div class="flex justify-center">
-        {{ component('Button', {text: 'Je visite Arcadia'}) }}
+        {{ component('Button', {text: 'Je visite Arcadia', size:'large', isPrimary: true, isCta: false, labelColor: ''}) }}
     </div>
 </section>

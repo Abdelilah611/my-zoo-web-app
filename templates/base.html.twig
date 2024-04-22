@@ -16,10 +16,11 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
             <script src="{{ asset('flickity.pkgd.min.js') }}"></script>
             <script src="https://kit.fontawesome.com/c2bdd07309.js" crossorigin="anonymous"></script>
+            <script src="{{ asset('js/menu.js') }}"></script>
         {% endblock %}
     </head>
 
-    <body class="bg-[#FCFBF7] font-body text-[#021708] text-base tracking-wider sm:text-xl sm:tracking-[wide]">
+    <body id="top" class="bg-[#FCFBF7] font-body text-[#021708] text-base tracking-wider sm:text-xl sm:tracking-[wide]">
         {% block body %}{% endblock %}  
     </body>
 </html>
