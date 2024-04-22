@@ -1,0 +1,61 @@
+<header class="fixed flex z-50 top-0 w-full h-20 border-b-[0.5px] md:border-b-[0.5px] border-[#F7EAE1] before:backdrop-blur-md before:backdrop-hack">
+    <!-- Nav Bar -->
+    <nav
+        id="main-nav"
+        class="max-w-[1200px] w-full m-auto px-8 flex items-center justify-between text-xl text-[#F7EAE1]"
+    >
+        <a 
+            href="#top"
+            class="flex"
+            aria-label="Arcadia Zoo - Page d'Accueil"
+        >
+            <img 
+                src="images/logo/zoo_logo_medium_transparent.svg"
+                class="hidden md:h-14 md:inline md:mr-8"
+                alt=""
+            >
+            <img 
+                src="images/logo/zoo_logo-nobg-sm-40px-jungle-primary.svg"
+                class="md:hidden"
+                alt=""
+            >
+        </a>
+        <button
+            id="menu-btn"
+            aria-label="toggle button"
+            aria-expanded="false"
+            class="cursor-pointer w-10 md:hidden"
+        >
+            <img 
+                src="images/icons/menu.svg"
+                alt=""
+            >
+        </button>
+        <ul 
+            id="toggled-menu"
+            class="w-full absolute top-full left-0 -translate-y-[150%] -z-10 border-b border-[#FAD5BB] flex flex-col items-center bg-[#071501]/10 backdrop-blur-lg md:static md:z-10 md:w-max md:transform-none md:border-none md:flex-row md:bg-transparent md:backdrop-blur-none"
+        >
+            <li class="py-4 md:py-0 md:mx-4 md:text-xs lg:text-sm">
+                <a href="#services" class="uppercase w-full hover:underline"> Nos Services </a>
+            </li>
+            <li class="py-4 md:py-0 md:mx-4 md:text-xs lg:text-sm">
+                <a href="#habitats" class="uppercase w-full hover:underline"> Nos Habitats </a>
+            </li>
+            <li class="py-4 md:py-0 md:mx-4 md:text-xs lg:text-sm">
+                <a href="#informations" class="uppercase w-full hover:underline"> Infos et Réservations </a>
+            </li>
+            <li class="hidden md:inline md:py-4 md:py-0 md:mx-4">
+                <div class="flex items-center justify-center">
+                    <svg height="40" width="1">
+                        <line x1="0" y1="0" x2="0" y2="40" style="stroke:#F7EAE1;stroke-width:2" />
+                    </svg>
+                </div>
+            </li>
+            <li class="py-4 md:py-0 md:mx-4">
+                <div>
+                    {{ component('Button', {text: 'Employé.e.s', size:'small', isPrimary: false, isCta: true, labelColor: ''}) }}
+                </div>
+
+            </li>
+        </ul>
+</header>
