@@ -19,13 +19,11 @@ class Button
         bool $isPrimary = true,
         bool $isCta = false,
         string $labelColor = ''
-    ) 
-    {
+    ) {
         $this->text = $text;
         $this->size = $size;
         $this->isPrimary = $isPrimary;
         $this->isCta = $isCta;
         $this->labelColor = $labelColor;
     }
-
 }
