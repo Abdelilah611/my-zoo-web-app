@@ -1813,6 +1813,11 @@ video {
     padding-bottom: 15rem;
   }
 
+  .md\:px-32 {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
   .md\:pt-60 {
     padding-top: 15rem;
   }
