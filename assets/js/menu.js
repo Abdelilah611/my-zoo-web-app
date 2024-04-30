@@ -1,6 +1,6 @@
 // To be sure that the DOM is fully loaded before executing the code
 document.addEventListener('DOMContentLoaded', function () {
-  // Select the menu button, menu image, toggled menu, header, and hero section
+  // Select the components to be manipulated
   const toggleMenuBtn = document.querySelector('#menu-btn')
   const toggleMenuImg = document.querySelector('#menu-btn img')
   const toggledMenu = document.querySelector('#toggled-menu')
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to toggle the navigation menu
   function toggleNav() {
-    toggledMenu.classList.toggle('-translate-y-[150%]') // Toggle the menu visibility
+    toggledMenu.classList.toggle('-translate-y-[150%]') //
 
     // Change the menu button image and aria-expanded attribute based on the menu visibility
     if (toggledMenu.classList.contains('-translate-y-[150%]')) {
