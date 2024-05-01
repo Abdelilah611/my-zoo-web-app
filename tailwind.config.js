@@ -8,8 +8,13 @@ module.exports = {
     extend: {
       colors: {
         myWhite: '#FCFBF7',
+        myBlack: '#021708',
         primGreen: '#1F5906',
         secBrown: '#73370D',
+        savannahBg: '#FAD5BB',
+        swampBG: '#C7FCB1',
+        lightHeader: '#FAD5BB',
+        darkHeader: '#73370D',
       },
       textShadow: {
         sm: '0 1px 2px var(--tw-shadow-color)',
