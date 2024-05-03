@@ -12,6 +12,7 @@ class HabitatsController extends AbstractController
     public function index(): Response
     {
         $page_name = 'habitats';
+
         return $this->render('zoo-habitats/index.html.twig', [
             'controller_name' => 'HabitatsController',
             'page_name' => $page_name,

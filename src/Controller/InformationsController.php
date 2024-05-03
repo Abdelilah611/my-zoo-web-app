@@ -12,6 +12,7 @@ class InformationsController extends AbstractController
     public function index(): Response
     {
         $page_name = 'informations';
+
         return $this->render('zoo-informations/index.html.twig', [
             'controller_name' => 'InformationsController',
             'page_name' => $page_name,
