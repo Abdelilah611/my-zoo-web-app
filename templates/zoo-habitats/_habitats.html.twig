@@ -20,13 +20,13 @@
             <h3 class="font-header text-[#FAD5BB] self-center text-[28px] sm:text-[40px] tracking-[0.01em]">Biôme Jungle</h3>
             <p class="self-center text-center text-xl font-semibold tracking-wide">Plongez au cœur de la splendeur verdoyante</p>
             <div class="flex flex-row justify-center pt-5 text-[#FCFBF7]">
-                <button>
+                <button id="jungle">
                     <i class="fas fa-chevron-down text-4xl text-[#FAD5BB]"></i>
                 </button>
             </div>
         </div>
     </div>
-    <div class="flex justify-center bg-primGreen text-myWhite pt-10 pb-20 px-8 md:pt-16 md:pb-32">
+    <div id="jungle-details" class="hidden flex justify-center bg-primGreen text-myWhite pt-10 pb-20 px-8 md:pt-16 md:pb-32">
         <div class="flex flex-col w-full max-w-[1200px] justify-center items-center gap-16 md:gap-20">
             <div id="jungle-info" class="flex flex-col items-center gap-8">
                 <div class="flex items-center gap-3">
@@ -56,10 +56,10 @@
                             <p> 
                                 Au cœur de notre luxuriante Jungle, Indira rôde avec une force gracieuse, symbole de l'attrait énigmatique de la nature sauvage.
                             </p>
-                            <button class="text-start text-[#FAD5BB] italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
+                            <button id="indira" class="text-start text-[#FAD5BB] italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
                         </div>
                     </div>
-                    <div class="flex justify-center lg:w-2/3">
+                    <div id="indira-details" class="hidden flex justify-center lg:w-2/3">
                         <p class="py-3">
                         Indira pèse en ce moment 180 kg, et mesure 2,5 m de long (queue comprise).
                         Nous jugeons son état de santé comme étant excellent. <br>
@@ -80,10 +80,10 @@
                             <p class="lg:text-end"> 
                                 Au sein de son habitat de prédilection, Maya virevolte d’arbre en arbre, teintant la jungle de son aura intrépide.
                             </p>
-                            <button class="text-start text-[#FAD5BB] italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
+                            <button id="maya" class="text-start text-[#FAD5BB] italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
                         </div>
                     </div>
-                    <div class="flex self-end lg:w-2/3">
+                    <div id="maya-details" class="hidden flex self-end lg:w-2/3">
                         <p class="py-3">
                         Maya pèse en ce moment 1 kg, et mesure 0,80 m de long.
                         Nous jugeons Maya comme étant en bonne forme. <br>
@@ -104,10 +104,10 @@
                             <p> 
                                 Dans un éclair de plumes irisées, Zéphyr glisse sans effort dans la jungle, son bec singulier symbolisant la beauté exotique et l'harmonie complexe de la forêt tropicale.
                             </p>
-                            <button class="text-start text-[#FAD5BB] italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
+                            <button id="zephyr" class="text-start text-[#FAD5BB] italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
                         </div>
                     </div>
-                    <div class="flex justify-center lg:w-2/3">
+                    <div id="zephyr-details" class="hidden flex justify-center lg:w-2/3">
                         <p class="py-3">
                         Zéphyr pèse en ce moment 0,5 kg, et mesure 0,5 m de long.
                         Nous jugeons son état de santé comme étant excellent. <br>
@@ -132,18 +132,18 @@
             <h3 class="font-header text-[#FAD5BB] self-center text-[28px] sm:text-[40px] tracking-[0.01em]">Biôme Savane</h3>
             <p class="self-center text-center text-xl font-semibold tracking-wide">Là où les horizons sans fin rencontrent une beauté indomptée</p>
             <div class="flex flex-row justify-center pt-5 text-[#FCFBF7]">
-                <button>
+                <button id="savannah">
                     <i class="fas fa-chevron-down text-4xl text-[#FAD5BB]"></i>
                 </button>
             </div>
         </div>
     </div>
-    <div class="flex justify-center bg-savannahBG text-myBlack pt-10 pb-20 px-8 md:pt-16 md:pb-32">
+    <div id="savannah-details" class="hidden flex justify-center bg-savannahBG text-myBlack pt-10 pb-20 px-8 md:pt-16 md:pb-32">
         <div class="flex flex-col w-full max-w-[1200px] justify-center items-center gap-16 md:gap-20">
             <div id="jungle-info" class="flex flex-col items-center gap-8">
                 <div class="flex items-center gap-3">
                     <img src="images/logo/zoo_logo-nobg-sm-40px-savannah.svg" width="20px"  alt="Arcadia Logo">
-                    <h3 class="font-header text-3xl text-primGreen">Marais</h3>
+                    <h3 class="font-header text-3xl text-primGreen">Savane</h3>
                 </div>
                 <p class="md:text-center max-w-[792px]">
                     Explorez notre célèbre savane, où les prairies dorées s'étendent jusqu'à l'horizon et où la faune africaine iconique se promène librement à perte de vue.
@@ -168,10 +168,10 @@
                             <p> 
                                 Dans les vastes étendues de notre savane, Leo règne en maître, incarnant la majesté royale et la puissance sauvage, un véritable monarque des steppes.
                             </p>
-                            <button class="text-start text-primGreen italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
+                            <button id="leonidas" class="text-start text-primGreen italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
                         </div>
                     </div>
-                    <div class="flex justify-center lg:w-2/3">
+                    <div id="leonidas-details" class="hidden flex justify-center lg:w-2/3">
                         <p class="py-3">
                         Leonidas pèse en ce moment 200 kg, et mesure 2,5 m de long (queue comprise).
                         Nous jugeons son état de santé comme étant excellent. <br>
@@ -192,10 +192,10 @@
                             <p class="lg:text-end"> 
                                 Parcourant gracieusement les plaines de la Savane, la stature élégante et le comportement serein de Grace incarnent la beauté tranquille de notre vaste paysage.
                             </p>
-                            <button class="text-start text-primGreen italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
+                            <button id="grace" class="text-start text-primGreen italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
                         </div>
                     </div>
-                    <div class="flex self-end lg:w-2/3">
+                    <div id="grace-details" class="hidden flex self-end lg:w-2/3">
                         <p class="py-3">
                         Grace pèse en ce moment 900 kg, et mesure 5.50 m de long.
                         Nous jugeons Grace comme étant en bonne forme. <br>
@@ -216,10 +216,10 @@
                             <p> 
                                 Dans un éclair de plumes irisées, Zéphyr glisse sans effort dans la jungle, son bec singulier symbolisant la beauté exotique et l'harmonie complexe de la forêt tropicale.
                             </p>
-                            <button class="text-start text-primGreen italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
+                            <button id="ezra" class="text-start text-primGreen italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
                         </div>
                     </div>
-                    <div class="flex justify-center lg:w-2/3">
+                    <div id="ezra-details" class="hidden flex justify-center lg:w-2/3">
                         <p class="py-3">
                         Ezra pèse en ce moment 4000 kg, et mesure 3.50 m de haut.
                         Nous jugeons son état de santé comme étant excellent. <br>
@@ -244,13 +244,13 @@
             <h3 class="font-header text-[#FAD5BB] self-center text-[28px] sm:text-[40px] tracking-[0.01em]">Biôme Marais</h3>
             <p class="self-center text-center text-xl font-semibold tracking-wide">Explorez l'équilibre délicat de la nature au cœur du marais</p>
             <div class="flex flex-row justify-center pt-5 text-[#FCFBF7]">
-                <button>
+                <button id="marsh">
                     <i class="fas fa-chevron-down text-4xl text-[#FAD5BB]"></i>
                 </button>
             </div>
         </div>
     </div>
-    <div class="flex justify-center bg-swampBG text-myBlack pt-10 pb-20 px-8 md:pt-16 md:pb-32">
+    <div id="marsh-details" class="hidden flex justify-center bg-swampBG text-myBlack pt-10 pb-20 px-8 md:pt-16 md:pb-32">
         <div class="flex flex-col w-full max-w-[1200px] justify-center items-center gap-16 md:gap-20">
             <div id="jungle-info" class="flex flex-col items-center gap-8">
                 <div class="flex items-center gap-3">
@@ -280,10 +280,10 @@
                             <p> 
                                 Dans les eaux tranquilles de notre marais, Aria incarne l'élégance et l'aplomb. Sa forme délicate est une vision de grâce sur la toile de fond du monde marécageux.
                             </p>
-                            <button class="text-start text-secBrown italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
+                            <button id="aria" class="text-start text-secBrown italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
                         </div>
                     </div>
-                    <div class="flex justify-center lg:w-2/3">
+                    <div id="aria-details" class="hidden flex justify-center lg:w-2/3">
                         <p class="py-3">
                         Aria pèse en ce moment 3 kg, et mesure 1,2 m de long.
                         Nous jugeons son état de santé comme étant excellent. <br>
@@ -300,14 +300,14 @@
                                 <img src="images/logo/zoo_logo-nobg-sm-40px-marsh.svg" width="20px" alt="Arcadia Logo">
                                 <h4 class="font-header text-3xl text-secBrown">Galen</h4>
                             </div>
-                            <p class="text-2xl capitalize font-bold"> cerf de Duvaucel (Barasingha) </p>
+                            <p class="text-2xl text-end capitalize font-bold"> cerf de Duvaucel (Barasingha) </p>
                             <p class="lg:text-end"> 
                                 Au milieu du havre marécageux, Galen se déplace avec une dignité silencieuse, ses bois se dressant vers le ciel, témoignant de la beauté intemporelle et de la noble résilience du marais.
                             </p>
-                            <button class="text-start text-secBrown italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
+                            <button id="galen" class="text-start text-secBrown italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
                         </div>
                     </div>
-                    <div class="flex self-end lg:w-2/3">
+                    <div id="galen-details" class="hidden flex self-end lg:w-2/3">
                         <p class="py-3">
                         Galen pèse en ce moment 160 kg, et mesure 1,80 m de haut.
                         Nous jugeons Galen comme étant en bonne forme. <br>
@@ -328,10 +328,10 @@
                             <p> 
                                 Avec un regard attentif et une grâce silencieuse, Osiris se tient en sentinelle dans le marais, relique vivante d'anciens mystères, sa présence étant un symbole de la nature sauvage du Nil.
                             </p>
-                            <button class="text-start text-secBrown italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
+                            <button id="osiris" class="text-start text-secBrown italic underline underline-offset-4 font-bold px-2"> Détails du vétérinaire ... </button>
                         </div>
                     </div>
-                    <div class="flex justify-center lg:w-2/3">
+                    <div id="osiris-details" class="hidden flex justify-center lg:w-2/3">
                         <p class="py-3">
                         Osiris pèse en ce moment 5 kg, et mesure 1.50 m de haut.
                         Nous jugeons son état de santé comme étant excellent. <br>

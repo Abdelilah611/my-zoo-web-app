@@ -1174,6 +1174,10 @@ video {
   text-align: start;
 }
 
+.text-end {
+  text-align: end;
+}
+
 .font-body {
   font-family: Optima, Candara, "Noto Sans", source-sans-pro, sans-serif;;
 }
