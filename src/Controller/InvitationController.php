@@ -52,8 +52,10 @@ class InvitationController extends AbstractController
             return $this->redirectToRoute('admin');
         }
 
+        $page_name = 'invitation';
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form,
+            'page_name' => $page_name,
         ]);
     }
 }
