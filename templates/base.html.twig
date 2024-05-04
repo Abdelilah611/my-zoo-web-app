@@ -26,7 +26,9 @@
     </head>
 
     <body id="top" class="bg-myWhite font-body text-myBlack text-base tracking-wider sm:text-xl sm:tracking-[wide]">
-        {% include 'components/_header.html.twig' %}
+        {% if page_name != 'login' %}
+            {% include 'components/_header.html.twig' %}
+        {% endif %}
         {% block body %}{% endblock %}  
     </body>
 </html>

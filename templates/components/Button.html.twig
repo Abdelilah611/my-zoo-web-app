@@ -11,6 +11,9 @@
     size == 'large' ? 'text-xl py-5 px-8' : '',
 ] %}
 
+{# Define if it's a Submit Button #}
+{% set buttonSubmit = isSubmit ? 'submit' : '' %}
+
 {# Define conditional button classes based on whether it's a CTA and color type #}
 {% if isCta %}
     {% set bgColor = isPrimary ? 'bg-primGreen' : 'bg-secBrown' %}
@@ -25,7 +28,8 @@
 {# Merge the previoius classes with default classes #}
 {% set buttonClasses = buttonClasses|merge([bgColor, borderColor, textColor]) %}
 
+
 {# Render the button #}
-<button class="{{ buttonClasses|join(' ') }}">
+<button class="{{ buttonClasses|join(' ') }}" type="{{ buttonSubmit }}">
     {{ text }}
 </button>
