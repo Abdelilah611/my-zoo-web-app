@@ -1,0 +1,47 @@
+<section class="flex flex-col gap-10 py-20 md:py-32">
+    <h2 class="font-header text-[40px] leading-[48px] text-[#73370D] tracking-tight px-8  sm:text-6xl sm:text-center">Quelques Lueurs de Ravissement</h2>
+    <div 
+        class="carousel py-4"
+        data-flickity='{ "freeScroll": true, "wrapAround": true }'
+    >
+        {# {% for review in reviews %} #}
+            <div class="carousel-cell flex flex-col mx-6 my-2 p-8 gap-3 min-w-[300px] max-w-[540px] bg-[#F7EAE1] rounded-2xl border-[1px] border-[#1F5906] shadow-md">
+                <p>"All of my text review in this little paragraph to show that I'm satisfied."</p>
+                <p class="font-normal text-[#1F5906] text-right w-full">- Emilie C.</p>
+            </div>
+            <div class="carousel-cell flex flex-col mx-6 my-2 p-8 gap-3 min-w-[300px] max-w-[540px] bg-[#F7EAE1] rounded-2xl border-[1px] border-[#1F5906] shadow-md">
+                <p>"All of my text review in this little paragraph to show that I'm satisfied."</p>
+                <p class="font-normal text-[#1F5906] text-right w-full">- Mickael N.</p>
+            </div>
+            <div class="carousel-cell flex flex-col mx-6 my-2 p-8 gap-3 min-w-[300px] max-w-[540px] bg-[#F7EAE1] rounded-2xl border-[1px] border-[#1F5906] shadow-md">
+                <p>"All of my text review in this little paragraph to show that I'm satisfied."</p>
+                <p class="font-normal text-[#1F5906] text-right w-full">- Cawoline E.</p>
+            </div>
+        {# {% endfor %} #}
+    </div>
+    <div class="flex flex-col my-10 gap-10 px-8 md:max-w-[792px] md:w-full md:mx-auto">
+        <p class="text-2xl font-bold text-[#73370D] text-center">Vous aussi, partagez nous votre expérience à Arcadia !</p>
+        <form class="flex flex-col gap-5">
+            <div class="flex w-full gap-5">
+                <div class="w-1/2">
+                    <label for="firstname" class="block pb-2 text-[#1F5906] text-sm italic tracking-wider">Votre Prénom</label>
+                    <input id="firstname" type="text" placeholder="Nico" class="block text-base tracking-wider w-full p-2 border-[0.5px] border-[#1F5906] bg-[#1F5906]/[.02] rounded placeholder:text-[#B3ADA9] placeholder:text-base invalid:border-[#D43E35] invalid:text-[#D43E35] focus:border-[#2A66DB] focus:ring-1 focus:outline-none focus:ring-[#2A66DB]">
+                </div>
+                <div class="w-1/2">
+                    <label for="lastname" class="block pb-2 text-[#1F5906] text-sm italic tracking-wider">Votre Nom</label>
+                    <input id="lastname" type="text" placeholder="PBT" class="block text-base tracking-wider w-full p-2 border-[0.5px] border-[#1F5906] bg-[#1F5906]/[.02] rounded placeholder:text-[#B3ADA9] placeholder:text-base invalid:border-[#D43E35] invalid:text-[#D43E35] focus:border-[#2A66DB] focus:ring-1 focus:outline-none focus:ring-[#2A66DB]">
+                </div>
+            </div>
+            
+            <div>
+                <label for="review" class="block pb-2 text-[#1F5906] text-sm italic tracking-wider">Votre avis</label>
+                <textarea id="review" placeholder="Écrivez votre message ici ..." class="block text-base tracking-wider w-full p-2 border-[0.5px] border-[#1F5906] bg-[#1F5906]/[.02] rounded placeholder:text-[#B3ADA9] placeholder:text-base invalid:border-[#D43E35] invalid:text-[#D43E35] focus:border-[#2A66DB] focus:ring-1 focus:outline-none focus:ring-[#2A66DB]"></textarea>
+            </div>
+            <div class="self-center pt-5">
+                {{ component('Button', {text: 'Poster mon Avis', size:'medium', isPrimary: true, isCta: false, labelColor: ''}) }}
+            </div>
+            
+        </form>
+    </div>
+
+</section>
