@@ -1674,6 +1674,10 @@ video {
     width: max-content;
   }
 
+  .md\:w-\[540px\] {
+    width: 540px;
+  }
+
   .md\:min-w-\[37px\] {
     min-width: 37px;
   }
@@ -1712,6 +1716,10 @@ video {
 
   .md\:items-start {
     align-items: flex-start;
+  }
+
+  .md\:items-end {
+    align-items: flex-end;
   }
 
   .md\:justify-center {

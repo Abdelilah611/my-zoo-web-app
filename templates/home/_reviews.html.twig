@@ -1,23 +1,15 @@
 <section class="flex flex-col gap-10 py-20 md:py-32">
     <h2 class="font-header text-[40px] leading-[48px] text-[#73370D] tracking-tight px-8  sm:text-6xl sm:text-center">Quelques Lueurs de Ravissement</h2>
     <div 
-        class="carousel py-4"
+        class="carousel py-4 content-center"
         data-flickity='{ "freeScroll": true, "wrapAround": true }'
     >
-        {# {% for review in reviews %} #}
-            <div class="carousel-cell flex flex-col mx-6 my-2 p-8 gap-3 min-w-[300px] max-w-[540px] bg-[#F7EAE1] rounded-2xl border-[1px] border-[#1F5906] shadow-md">
-                <p>"All of my text review in this little paragraph to show that I'm satisfied."</p>
-                <p class="font-normal text-[#1F5906] text-right w-full">- Emilie C.</p>
-            </div>
-            <div class="carousel-cell flex flex-col mx-6 my-2 p-8 gap-3 min-w-[300px] max-w-[540px] bg-[#F7EAE1] rounded-2xl border-[1px] border-[#1F5906] shadow-md">
-                <p>"All of my text review in this little paragraph to show that I'm satisfied."</p>
-                <p class="font-normal text-[#1F5906] text-right w-full">- Mickael N.</p>
-            </div>
-            <div class="carousel-cell flex flex-col mx-6 my-2 p-8 gap-3 min-w-[300px] max-w-[540px] bg-[#F7EAE1] rounded-2xl border-[1px] border-[#1F5906] shadow-md">
-                <p>"All of my text review in this little paragraph to show that I'm satisfied."</p>
-                <p class="font-normal text-[#1F5906] text-right w-full">- Cawoline E.</p>
-            </div>
-        {# {% endfor %} #}
+        {% for review in reviews %}
+            <div class="carousel-cell flex flex-col mx-6 my-2 p-8 gap-3 min-w-[300px] max-w-[540px] bg-[#F7EAE1] rounded-2xl border-[1px] border-[#1F5906] shadow-md md:w-[540px]">
+                <p class="self-center"> {{ review.comment }} </p>
+                <p class="font-normal text-[#1F5906] text-right w-full">- {{ review.pseudo }}</p>
+            </div> 
+        {% endfor %}
     </div>
     <div class="flex flex-col my-10 gap-10 px-8 md:max-w-[792px] md:w-full md:mx-auto">
         <p class="text-2xl font-bold text-[#73370D] text-center">Vous aussi, partagez nous votre expérience à Arcadia !</p>
@@ -45,3 +37,17 @@
     </div>
 
 </section>
+
+
+            {# <div class="carousel-cell flex flex-col mx-6 my-2 p-8 gap-3 min-w-[300px] max-w-[540px] bg-[#F7EAE1] rounded-2xl border-[1px] border-[#1F5906] shadow-md">
+                <p>"All of my text review in this little paragraph to show that I'm satisfied."</p>
+                <p class="font-normal text-[#1F5906] text-right w-full">- Emilie C.</p>
+            </div>
+            <div class="carousel-cell flex flex-col mx-6 my-2 p-8 gap-3 min-w-[300px] max-w-[540px] bg-[#F7EAE1] rounded-2xl border-[1px] border-[#1F5906] shadow-md">
+                <p>"All of my text review in this little paragraph to show that I'm satisfied."</p>
+                <p class="font-normal text-[#1F5906] text-right w-full">- Mickael N.</p>
+            </div>
+            <div class="carousel-cell flex flex-col mx-6 my-2 p-8 gap-3 min-w-[300px] max-w-[540px] bg-[#F7EAE1] rounded-2xl border-[1px] border-[#1F5906] shadow-md">
+                <p>"All of my text review in this little paragraph to show that I'm satisfied."</p>
+                <p class="font-normal text-[#1F5906] text-right w-full">- Cawoline E.</p>
+            </div> #}

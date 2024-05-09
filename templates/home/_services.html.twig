@@ -5,7 +5,24 @@
             <p class="tracking-wider">Faites-vous plaisir avec nos services conçus pour enrichir votre visite et créer des souvenirs durables. Des expériences culinaires gastronomiques aux visites guidées exclusives, nous proposons tout ce qui sublimera votre aventure à Arcadia.</p>
         </div>
         <div class="flex flex-col sm:flex-row sm:flex-wrap justify-between justify-items-center items-center sm:space-y-0 mx-auto w-full">
-            <div class="max-w-[300px] space-y-5 py-8 m-auto">
+            {% for service in services %}
+                <div class="max-w-[300px] space-y-5 py-8 m-auto">
+                    <img class="m-auto aspect-square w-[250px] min-w-[250px] h-[250px] min-h-[250px] object-cover rounded-full overflow-hidden border-2 border-[#73370D] " src="/images/service-{{ service.id }}.webp" alt="Photo de {{ service.label }}">
+                    <div class="space-y-2">
+                        <h3 class="text-[#73370D] text-3xl font-bold text-center tracking-wide"> {{ service.label|capitalize }} </h3>
+                        <p class="text-center"> {{ service.description }} </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="flex flex-row justify-center pt-8">
+                {{ component('Button', {text: 'J\'explore les services', size:'medium', isPrimary: true, isCta: false, labelColor: ''}) }}
+        </div>
+    </div>
+</section>
+        
+        
+        {# <div class="max-w-[300px] space-y-5 py-8 m-auto">
                 <img class="m-auto aspect-square w-[250px] min-w-[250px] h-[250px] min-h-[250px] object-cover rounded-full overflow-hidden border-2 border-[#73370D] " src="/images/restaurant-arcadia.webp" alt="Photo du restaurant">
                 <div class="space-y-2">
                     <h3 class="text-[#73370D] text-3xl font-bold text-center tracking-wide">Restaurants</h3>
@@ -25,10 +42,4 @@
                     <h3 class="text-[#73370D] text-3xl font-bold text-center tracking-wide">Visites en Train</h3>
                     <p class="text-center">Profitez de balades tranquilles, découvrant des joyaux cachés en chemin</p>
                 </div>
-            </div>
-        </div>
-        <div class="flex flex-row justify-center pt-8">
-                {{ component('Button', {text: 'J\'explore les services', size:'medium', isPrimary: true, isCta: false, labelColor: ''}) }}
-        </div>
-    </div>
-</section>
+            </div> #}
