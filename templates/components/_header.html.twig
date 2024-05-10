@@ -6,7 +6,7 @@
     >
         <a 
             href="{{ path('app_home') }}"
-            class="flex"
+            class="flex hover:scale-110 transition-all duration-[350ms] hover:drop-shadow-md ease-in-out"
             aria-label="Arcadia Zoo - Page d'Accueil"
         >
             <img 
@@ -36,13 +36,31 @@
             class="w-full absolute top-full left-0 -translate-y-[150%] -z-10 border-b border-[#FAD5BB] flex flex-col items-center bg-[#071501]/10 backdrop-blur-md md:static md:z-10 md:w-max md:transform-none md:border-none md:flex-row md:bg-transparent md:backdrop-blur-none"
         >
             <li class="py-4 md:py-0 md:mx-4 md:text-xs lg:text-sm">
-                <a href="{{ path('app_services') }}" class="uppercase w-full hover:underline"> Nos Services </a>
+                <a 
+                    href="{{ path('app_services') }}"
+                    class="uppercase w-full group relative w-max"
+                > 
+                    <span class="transition-all duration-[350ms] group-hover:text-lightLink"> Nos Services </span>
+                    <span class="absolute -bottom-1 left-0 w-0 transition-all duration-[350ms] ease-in-out h-0.5 bg-lightLink group-hover:w-full"></span>
+                </a>
             </li>
             <li class="py-4 md:py-0 md:mx-4 md:text-xs lg:text-sm">
-                <a href="{{ path('app_habitats') }}" class="uppercase w-full hover:underline"> Nos Habitats </a>
+                <a
+                    href="{{ path('app_habitats') }}"
+                    class="uppercase w-full group relative w-max"
+                > 
+                    <span class="transition-all duration-[350ms] group-hover:text-lightLink"> Nos Habitats </span>
+                    <span class="absolute -bottom-1 left-0 w-0 transition-all duration-[350ms] ease-in-out h-0.5 bg-lightLink group-hover:w-full"></span>
+                </a>
             </li>
             <li class="py-4 md:py-0 md:mx-4 md:text-xs lg:text-sm">
-                <a href="{{ path('app_informations')}}" class="uppercase w-full hover:underline"> Infos et Réservations </a>
+                <a 
+                    href="{{ path('app_informations')}}"
+                    class="uppercase w-full group relative w-max"
+                > 
+                    <span class="transition-all duration-[350ms] group-hover:text-lightLink">Infos et Réservations </span>
+                    <span class="absolute -bottom-1 left-0 w-0 transition-all duration-[350ms] ease-in-out h-0.5 bg-lightLink group-hover:w-full"></span>
+                </a>
             </li>
             <li class="hidden md:inline md:py-4 md:py-0 md:mx-4">
                 <div class="flex items-center justify-center">
