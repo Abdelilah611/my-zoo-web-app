@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\AnimalRepository;
 use App\Repository\HabitatRepository;
+use App\Repository\OpeningHourRepository;
 use App\Repository\ReviewRepository;
 use App\Repository\ServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +19,7 @@ class HomeController extends AbstractController
         AnimalRepository $animalRepository,
         ServiceRepository $serviceRepository,
         ReviewRepository $reviewRepository,
+        OpeningHourRepository $openingHourRepository
     ): Response {
         $page_name = 'home';
 
@@ -28,6 +30,7 @@ class HomeController extends AbstractController
             'spotlighted' => $animalRepository->spotlighted(),
             'services' => $serviceRepository->findAll(),
             'reviews' => $reviewRepository->visibleReviews(),
+            'openingHours' => $openingHourRepository->getSortedOpeningHours(),
         ]);
     }
 }

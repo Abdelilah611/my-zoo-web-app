@@ -15,6 +15,7 @@ module.exports = {
         swampBG: '#C7FCB1',
         lightHeader: '#FAD5BB',
         darkHeader: '#73370D',
+        lightLink: '#FAD5BB',
       },
       textShadow: {
         sm: '0 1px 2px var(--tw-shadow-color)',
