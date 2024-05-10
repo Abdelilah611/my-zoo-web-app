@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class FooterController extends AbstractController
 {
     private OpeningHourRepository $openingHourRepository;
+
     public function __construct(OpeningHourRepository $openingHourRepository)
     {
         $this->openingHourRepository = $openingHourRepository;
