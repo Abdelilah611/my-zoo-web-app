@@ -25,7 +25,9 @@
                 <h3 class="font-header text-[#FAD5BB] self-center text-[28px] sm:text-[40px] tracking-[0.01em]">Biôme {{ habitat.label }}</h3>
                 <p class="self-center text-center text-xl font-semibold tracking-wide">{{ habitat.description }}</p>
                 <div class="flex flex-row justify-center pt-5 text-[#FCFBF7]">
-                    {{ component('Button', {text: 'Je découvre la jungle', size:'medium', isPrimary: true, isCta: true, labelColor: ''}) }}
+                    <a href="{{ path('app_habitats') }}#{{ habitat.label }}-details">
+                        {{ component('Button', {text: 'Je découvre le biôme ' ~ habitat.label|capitalize, size:'medium', isPrimary: true, isCta: false, labelColor: 'white'}) }}
+                    </a>
                 </div>
             </div>
         </div>

@@ -9,8 +9,12 @@
             Où la nature prospère
         </h1>
         <div class="flex py-3 gap-5 flex-wrap">
-            {{ component('Button', {text: 'En savoir plus', size: 'medium', isPrimary: true, isCta: false, labelColor: 'white'}) }}
-            {{ component('Button', {text: 'Je réserve', size:'medium', isPrimary: true, isCta: false, labelColor: 'white'}) }}
+            <a href="{{ path('app_informations')}}#about-us">
+                {{ component('Button', {text: 'En savoir plus', size: 'medium', isPrimary: true, isCta: false, labelColor: 'white'}) }}
+            </a>
+            <a href="{{ path('app_informations') }}">
+                {{ component('Button', {text: 'Nous contacter', size:'medium', isPrimary: true, isCta: false, labelColor: 'white'}) }}
+            </a>
         </div>
     </div>
 </section>

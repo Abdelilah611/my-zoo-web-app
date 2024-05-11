@@ -7,6 +7,8 @@
         </p>
     </div>
     <div class="flex justify-center">
-        {{ component('Button', {text: 'Je visite Arcadia', size:'large', isPrimary: true, isCta: false, labelColor: ''}) }}
+        <a href="{{ path('app_informations')}}">
+            {{ component('Button', {text: 'Je visite Arcadia', size:'large', isPrimary: true, isCta: false, labelColor: ''}) }}
+        </a>
     </div>
 </section>
