@@ -31,7 +31,7 @@
         {% block body %}{% endblock %}
 
         <footer>
-            {% if page_name != 'login' %}
+            {% if page_name not in ['login', 'profile'] %}
                 {% include 'components/_footer.html.twig' %}
             {% endif %}
         </footer>
