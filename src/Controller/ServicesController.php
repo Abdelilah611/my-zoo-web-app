@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\OpeningHourRepository;
+use App\Repository\ServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -10,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class ServicesController extends AbstractController
 {
     #[Route('/services', name: 'app_services')]
-    public function index(OpeningHourRepository $openingHourRepository): Response
+    public function index(OpeningHourRepository $openingHourRepository, ServiceRepository $serviceRepository): Response
     {
         $page_name = 'services';
 
@@ -18,6 +19,7 @@ class ServicesController extends AbstractController
             'controller_name' => 'ServicesController',
             'page_name' => $page_name,
             'openingHours' => $openingHourRepository->getSortedOpeningHours(),
+            'services' => $serviceRepository->findAll(),
         ]);
     }
 }
