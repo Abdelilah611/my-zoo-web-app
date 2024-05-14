@@ -4,8 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Animal;
 use App\Entity\Habitat;
-use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<Habitat>
