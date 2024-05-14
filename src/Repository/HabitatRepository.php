@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\Animal;
 use App\Entity\Habitat;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Habitat>
@@ -32,28 +33,29 @@ class HabitatRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-}
-//    /**
-//     * @return Habitat[] Returns an array of Habitat objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('h')
-//            ->andWhere('h.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('h.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Habitat
-//    {
-//        return $this->createQueryBuilder('h')
-//            ->andWhere('h.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * @return array<int|string, array{
+     *   habitat: Habitat,
+     *   animals: Animal[]
+     * }> Returns an array of Habitat objects with animals
+     */
+    public function getHabitatsWithAnimals(): array
+    {
+        $habitats = $this->allHabitats();
+
+        $habitatsWithAnimals = [];
+
+        foreach ($habitats as $habitat) {
+            $habitatId = $habitat->getId();
+            $animals = $habitat->getAnimals()->toArray();
+
+            $habitatsWithAnimals[$habitatId] = [
+                'habitat' => $habitat,
+                'animals' => $animals,
+            ];
+        }
+
+        return $habitatsWithAnimals;
+    }
+}

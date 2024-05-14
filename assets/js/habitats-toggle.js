@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const detailsId = `${buttonId}-details`
         const detailsElement = document.getElementById(detailsId)
         detailsElement.classList.toggle('hidden')
+
+        const icon = button.querySelector('i')
+        if (icon) {
+          // Toggle a class to rotate the icon
+          icon.classList.toggle('rotate-180')
+        }
       })
     })
   })
