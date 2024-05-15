@@ -1004,6 +1004,14 @@ video {
   border-bottom-width: 1px;
 }
 
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
+.border-none {
+  border-style: none;
+}
+
 .border-\[\#1F5906\] {
   --tw-border-opacity: 1;
   border-color: rgb(31 89 6 / var(--tw-border-opacity));
@@ -1113,6 +1121,10 @@ video {
 
 .bg-\[url\(\'\.\.\/\.\.\/images\/maya-hero\.webp\'\)\] {
   background-image: url('../../images/maya-hero.webp');
+}
+
+.bg-\[url\(\'\.\.\/\.\.\/images\/galen-hero\.webp\'\)\] {
+  background-image: url('../../images/galen-hero.webp');
 }
 
 .bg-cover {
@@ -2088,6 +2100,12 @@ video {
   }
 
   .xl\:bg-\[center_bottom_1550px\] {
+    background-position: center bottom 1550px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:bg-\[center_bottom_1550px\] {
     background-position: center bottom 1550px;
   }
 }
