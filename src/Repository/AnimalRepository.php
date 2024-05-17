@@ -36,10 +36,6 @@ class AnimalRepository extends ServiceEntityRepository
         ;
     }
 
-    /**
-     * @param Animal $animal
-     * @return FoodConsumption|null
-     */
     public function findOneByLastFoodConsumptionForAnimal(Animal $animal): ?FoodConsumption
     {
         return $this->getEntityManager()
@@ -53,10 +49,6 @@ class AnimalRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
-    /**
-     * @param Animal $animal
-     * @return VeterinaryReport|null
-     */
     public function findOneByLastVetReportForAnimal(Animal $animal): ?VeterinaryReport
     {
         return $this->getEntityManager()
