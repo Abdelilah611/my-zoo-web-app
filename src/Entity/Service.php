@@ -28,6 +28,12 @@ class Service
     #[ORM\ManyToMany(targetEntity: Image::class, inversedBy: 'services')]
     private Collection $images;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $longDescription = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $textBtn = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -89,5 +95,29 @@ class Service
     public function __toString(): string
     {
         return $this->label;
+    }
+
+    public function getLongDescription(): ?string
+    {
+        return $this->longDescription;
+    }
+
+    public function setLongDescription(string $longDescription): static
+    {
+        $this->longDescription = $longDescription;
+
+        return $this;
+    }
+
+    public function getTextBtn(): ?string
+    {
+        return $this->textBtn;
+    }
+
+    public function setTextBtn(?string $textBtn): static
+    {
+        $this->textBtn = $textBtn;
+
+        return $this;
     }
 }

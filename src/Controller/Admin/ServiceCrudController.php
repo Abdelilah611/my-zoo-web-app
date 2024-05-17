@@ -20,7 +20,9 @@ class ServiceCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('label'),
+            TextField::new('textBtn'),
             TextareaField::new('description'),
+            TextareaField::new('longDescription'),
         ];
     }
 }

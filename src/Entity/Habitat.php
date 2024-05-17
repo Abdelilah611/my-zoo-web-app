@@ -37,6 +37,9 @@ class Habitat
     #[ORM\OneToMany(targetEntity: Animal::class, mappedBy: 'habitat')]
     private Collection $animals;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $longDescription = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -141,5 +144,17 @@ class Habitat
     public function __toString(): string
     {
         return $this->getLabel();
+    }
+
+    public function getLongDescription(): ?string
+    {
+        return $this->longDescription;
+    }
+
+    public function setLongDescription(string $longDescription): static
+    {
+        $this->longDescription = $longDescription;
+
+        return $this;
     }
 }

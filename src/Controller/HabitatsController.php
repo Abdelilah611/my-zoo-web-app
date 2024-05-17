@@ -25,11 +25,26 @@ class HabitatsController extends AbstractController
 
         $habitatsWithAnimals = $habitatRepository->getHabitatsWithAnimals();
 
+        $animals = $animalRepository->findAll();
+
+        $animalReports = [];
+
+        foreach ($animals as $animal) {
+            $foodConsumption = $animalRepository->findOneByLastFoodConsumptionForAnimal($animal);
+            $vetReport = $animalRepository->findOneByLastVetReportForAnimal($animal);
+
+            $animalReports[$animal->getName()] = (object) [
+                'vetReport' => $vetReport,
+                'foodConsumption' => $foodConsumption,
+            ];
+        }
+
         return $this->render('zoo-habitats/index.html.twig', [
             'controller_name' => 'HabitatsController',
             'page_name' => $page_name,
             'openingHours' => $openingHourRepository->getSortedOpeningHours(),
             'habitatsWithAnimals' => $habitatsWithAnimals,
+            'animalReports' => $animalReports,
         ]);
     }
 }

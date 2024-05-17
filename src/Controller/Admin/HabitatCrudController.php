@@ -3,10 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Habitat;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class HabitatCrudController extends AbstractCrudController
 {
@@ -20,8 +21,9 @@ class HabitatCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('label'),
-            TextField::new('description'),
-            TextField::new('habitComment'),
+            TextareaField::new('description'),
+            TextareaField::new('longDescription'),
+            TextareaField::new('habitComment'),
             AssociationField::new('images'),
             AssociationField::new('animals'),
         ];

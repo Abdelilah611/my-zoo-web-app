@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Animal;
+use App\Entity\FoodConsumption;
+use App\Entity\VeterinaryReport;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -33,29 +35,38 @@ class AnimalRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    /**
+     * @param Animal $animal
+     * @return FoodConsumption|null
+     */
+    public function findOneByLastFoodConsumptionForAnimal(Animal $animal): ?FoodConsumption
+    {
+        return $this->getEntityManager()
+            ->getRepository(FoodConsumption::class)
+            ->createQueryBuilder('fc')
+            ->where('fc.animal = :animal')
+            ->setParameter('animal', $animal)
+            ->orderBy('fc.date', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    /**
+     * @param Animal $animal
+     * @return VeterinaryReport|null
+     */
+    public function findOneByLastVetReportForAnimal(Animal $animal): ?VeterinaryReport
+    {
+        return $this->getEntityManager()
+            ->getRepository(VeterinaryReport::class)
+            ->createQueryBuilder('vr')
+            ->where('vr.animal = :animal')
+            ->setParameter('animal', $animal)
+            ->orderBy('vr.date', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
-
-//    /**
-//     * @return Animal[] Returns an array of Animal objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Animal
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }

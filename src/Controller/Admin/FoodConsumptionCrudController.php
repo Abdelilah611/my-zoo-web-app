@@ -22,7 +22,7 @@ class FoodConsumptionCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             AssociationField::new('employee'),
             AssociationField::new('animal'),
-            DateTimeField::new('date')->hideOnForm(),
+            DateTimeField::new('date'),
             TextField::new('detail'),
         ];
     }
