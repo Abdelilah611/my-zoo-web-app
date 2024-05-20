@@ -17,6 +17,10 @@ module.exports = {
         lightHeader: '#FAD5BB',
         darkHeader: '#73370D',
         lightLink: '#FAD5BB',
+        danger: '#B52921',
+        lightDanger: '#F78C86',
+        success: '#055E1B',
+        lightSuccess: '#4AF074',
       },
       textShadow: {
         sm: '0 1px 2px var(--tw-shadow-color)',

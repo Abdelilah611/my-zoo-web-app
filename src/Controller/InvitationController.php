@@ -26,7 +26,7 @@ class InvitationController extends AbstractController
     {
         // If the invitation has already been used, redirect to the login page
         if ($invitation->getTheUser()) {
-            return $this->redirectToRoute('admin'); // Change this to login route later
+            return $this->redirectToRoute('app_login');
         }
 
         $user = new User();
@@ -50,7 +50,7 @@ class InvitationController extends AbstractController
             $this->entityManager->flush();
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('app_profile_show', ['profileNumber' => 'EMP-'.$user->getId()]);
         }
 
         $page_name = 'invitation';

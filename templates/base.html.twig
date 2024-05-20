@@ -20,11 +20,13 @@
             <script src="https://kit.fontawesome.com/c2bdd07309.js" crossorigin="anonymous"></script>
             <script type="module" src="{{ asset('js/menu.js') }}"></script>
             <script type="module" src="{{ asset('js/habitats-toggle.js') }}"></script>
+            <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         {% endblock %}
     </head>
 
-    <body id="top" class="bg-myWhite font-body text-myBlack text-base tracking-wider sm:text-xl sm:tracking-[wide]">
-        {% if page_name != 'login' %}
+    <body id="top" class="bg-myWhite font-body text-myBlack text-base tracking-wider md:text-xl md:tracking-[wide]">
+        {% if page_name not in ['login', 'profile'] %}
             {% include 'components/_header.html.twig' %}
         {% endif %}
         

@@ -642,8 +642,8 @@ video {
   display: flex;
 }
 
-.table {
-  display: table;
+.grid {
+  display: grid;
 }
 
 .hidden {
@@ -678,6 +678,10 @@ video {
   height: 250px;
 }
 
+.h-\[38\.2vh\] {
+  height: 38.2vh;
+}
+
 .h-\[61\.8vh\] {
   height: 61.8vh;
 }
@@ -704,6 +708,10 @@ video {
 
 .min-h-\[250px\] {
   min-height: 250px;
+}
+
+.min-h-\[260px\] {
+  min-height: 260px;
 }
 
 .min-h-\[300px\] {
@@ -824,6 +832,14 @@ video {
 
 .resize {
   resize: both;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -964,6 +980,10 @@ video {
   border-radius: 0.5rem;
 }
 
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
 .border-2 {
   border-width: 2px;
 }
@@ -1055,6 +1075,11 @@ video {
   background-color: rgb(245 252 242 / var(--tw-bg-opacity));
 }
 
+.bg-myBlack {
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 23 8 / var(--tw-bg-opacity));
+}
+
 .bg-myWhite {
   --tw-bg-opacity: 1;
   background-color: rgb(252 251 247 / var(--tw-bg-opacity));
@@ -1083,6 +1108,11 @@ video {
   background-color: rgb(115 55 13 / 0.02);
 }
 
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .bg-\[url\(\'\.\.\/\.\.\/images\/ezra-services\.webp\'\)\] {
   background-image: url('../../images/ezra-services.webp');
 }
@@ -1099,6 +1129,10 @@ video {
   background-image: url('../../images/maya-hero.webp');
 }
 
+.bg-\[url\(\'\.\.\/\.\.\/images\/profile\.webp\'\)\] {
+  background-image: url('../../images/profile.webp');
+}
+
 .bg-cover {
   background-size: cover;
 }
@@ -1111,6 +1145,10 @@ video {
   background-position: center;
 }
 
+.bg-top {
+  background-position: top;
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1120,8 +1158,16 @@ video {
   padding: 0.5rem;
 }
 
+.p-6 {
+  padding: 1.5rem;
+}
+
 .p-8 {
   padding: 2rem;
+}
+
+.p-5 {
+  padding: 1.25rem;
 }
 
 .px-12 {
@@ -1147,6 +1193,11 @@ video {
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .py-2 {
@@ -1299,6 +1350,14 @@ video {
   line-height: 1.75rem;
 }
 
+.text-\[20px\] {
+  font-size: 20px;
+}
+
+.text-\[24px\] {
+  font-size: 24px;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -1341,6 +1400,14 @@ video {
 
 .leading-\[52px\] {
   line-height: 52px;
+}
+
+.leading-\[24px\] {
+  line-height: 24px;
+}
+
+.leading-\[30px\] {
+  line-height: 30px;
 }
 
 .tracking-\[-0\.015em\] {
@@ -1397,9 +1464,19 @@ video {
   color: rgb(252 251 247 / var(--tw-text-opacity));
 }
 
+.text-lightDanger {
+  --tw-text-opacity: 1;
+  color: rgb(247 140 134 / var(--tw-text-opacity));
+}
+
 .text-lightHeader {
   --tw-text-opacity: 1;
   color: rgb(250 213 187 / var(--tw-text-opacity));
+}
+
+.text-lightSuccess {
+  --tw-text-opacity: 1;
+  color: rgb(74 240 116 / var(--tw-text-opacity));
 }
 
 .text-myBlack {
@@ -1428,6 +1505,10 @@ video {
 
 .underline-offset-4 {
   text-underline-offset: 4px;
+}
+
+.underline-offset-2 {
+  text-underline-offset: 2px;
 }
 
 .shadow-md {
@@ -1519,10 +1600,6 @@ video {
 
     See https://stackoverflow.com/a/76207141.
   */
-
-.\[a-zA-Z\:\\-\\\.\] {
-  a-z-a--z: \-\.;
-}
 
 .placeholder\:text-base::-moz-placeholder {
   font-size: 1rem;
@@ -1672,17 +1749,8 @@ video {
     font-size: 76px;
   }
 
-  .sm\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
   .sm\:leading-\[80px\] {
     line-height: 80px;
-  }
-
-  .sm\:tracking-\[wide\] {
-    letter-spacing: wide;
   }
 }
 
@@ -1814,6 +1882,14 @@ video {
     transform: none;
   }
 
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -1874,6 +1950,10 @@ video {
     background-position: bottom;
   }
 
+  .md\:bg-center {
+    background-position: center;
+  }
+
   .md\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
@@ -1882,6 +1962,11 @@ video {
   .md\:py-0 {
     padding-top: 0px;
     padding-bottom: 0px;
+  }
+
+  .md\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
   .md\:py-32 {
@@ -1931,6 +2016,11 @@ video {
     font-size: 76px;
   }
 
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
   .md\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -1958,6 +2048,10 @@ video {
 
   .md\:tracking-\[-0\.01em\] {
     letter-spacing: -0.01em;
+  }
+
+  .md\:tracking-\[wide\] {
+    letter-spacing: wide;
   }
 
   .md\:backdrop-blur-none {
@@ -1997,6 +2091,10 @@ video {
 
   .lg\:max-w-\[750px\] {
     max-width: 750px;
+  }
+
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .lg\:flex-row {

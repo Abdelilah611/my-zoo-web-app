@@ -32,6 +32,18 @@ class ReviewRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /**
+     * @return Review[]
+     */
+    public function invisibleReviews(): array
+    {
+        return $this->createQueryBuilder('r')
+            ->where('r.isVisible = :isVisible')
+            ->setParameter('isVisible', false)
+            ->getQuery()
+            ->getResult();
+    }
 }
 
 //    /**
