@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\FoodConsumption;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -21,28 +22,19 @@ class FoodConsumptionRepository extends ServiceEntityRepository
         parent::__construct($registry, FoodConsumption::class);
     }
 
-    //    /**
-    //     * @return FoodConsumption[] Returns an array of FoodConsumption objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('f')
-    //            ->andWhere('f.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('f.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    /**
+     * @return FoodConsumption[]
+     */
+    public function findLastSixByEmployee(User $employee): array
+    {
+        $query = $this->createQueryBuilder('fc')
+            ->where('fc.employee = :employee')
+            ->setParameter('employee', $employee)
+            ->orderBy('fc.date', 'DESC')
+            ->setMaxResults(6)
+            ->getQuery()
+            ->getResult();
 
-    //    public function findOneBySomeField($value): ?FoodConsumption
-    //    {
-    //        return $this->createQueryBuilder('f')
-    //            ->andWhere('f.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        return $query;
+    }
 }

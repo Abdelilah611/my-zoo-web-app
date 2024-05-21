@@ -75,6 +75,7 @@ class AppFixtures extends Fixture
             $habitat = new Habitat();
             $habitat->setLabel($name)
                 ->setDescription($faker->text(100))
+                ->setLongDescription($faker->text(200))
                 ->setHabitComment($faker->text(50))
                 ->addImage($faker->randomElement($images));
             $manager->persist($habitat);
@@ -88,6 +89,8 @@ class AppFixtures extends Fixture
             $service = new Service();
             $service->setLabel($label)
                 ->setDescription($faker->text(100))
+                ->setLongDescription($faker->text(200))
+                ->setTextBtn($faker->word())
                 ->addImage($faker->randomElement($images));
             $manager->persist($service);
             $services[] = $service;
@@ -103,7 +106,8 @@ class AppFixtures extends Fixture
             ->setState('excellente forme')
             ->setSize('2.5')
             ->setWeight('200')
-            ->addImage($images[0]);
+            ->addImage($images[0])
+            ->setPresentation($faker->text(100));
         $manager->persist($leonidas);
         $animals[] = $leonidas;
 
@@ -114,7 +118,8 @@ class AppFixtures extends Fixture
             ->setState('excellente forme')
             ->setSize('3.5')
             ->setWeight('4000')
-            ->addImage($images[1]);
+            ->addImage($images[1])
+            ->setPresentation($faker->text(100));
         $manager->persist($ezra);
         $animals[] = $ezra;
 
@@ -125,7 +130,8 @@ class AppFixtures extends Fixture
             ->setState('bonne forme')
             ->setSize('5.5')
             ->setWeight('900')
-            ->addImage($images[2]);
+            ->addImage($images[2])
+            ->setPresentation($faker->text(100));
         $manager->persist($grace);
         $animals[] = $grace;
 
@@ -136,7 +142,8 @@ class AppFixtures extends Fixture
             ->setState('excellente forme')
             ->setSize('2.5')
             ->setWeight('180')
-            ->addImage($images[3]);
+            ->addImage($images[3])
+            ->setPresentation($faker->text(100));
         $manager->persist($indira);
         $animals[] = $indira;
 
@@ -147,7 +154,8 @@ class AppFixtures extends Fixture
             ->setState('en forme')
             ->setSize('0.80')
             ->setWeight('1')
-            ->addImage($images[4]);
+            ->addImage($images[4])
+            ->setPresentation($faker->text(100));
         $manager->persist($maya);
         $animals[] = $maya;
 
@@ -158,7 +166,8 @@ class AppFixtures extends Fixture
             ->setState('excellente forme')
             ->setSize('0.50')
             ->setWeight('0.5')
-            ->addImage($images[5]);
+            ->addImage($images[5])
+            ->setPresentation($faker->text(100));
         $manager->persist($zephyr);
         $animals[] = $zephyr;
 
@@ -169,7 +178,8 @@ class AppFixtures extends Fixture
             ->setState('bonne forme')
             ->setSize('1.2')
             ->setWeight('3')
-            ->addImage($images[6]);
+            ->addImage($images[6])
+            ->setPresentation($faker->text(100));
         $manager->persist($aria);
         $animals[] = $aria;
 
@@ -180,7 +190,8 @@ class AppFixtures extends Fixture
             ->setState('excellente forme')
             ->setSize('1.8')
             ->setWeight('160')
-            ->addImage($images[7]);
+            ->addImage($images[7])
+            ->setPresentation($faker->text(100));
         $manager->persist($galen);
         $animals[] = $galen;
 
@@ -191,7 +202,8 @@ class AppFixtures extends Fixture
             ->setState('excellente forme')
             ->setSize('1.5')
             ->setWeight('5')
-            ->addImage($images[8]);
+            ->addImage($images[8])
+            ->setPresentation($faker->text(100));
         $manager->persist($osiris);
         $animals[] = $osiris;
 

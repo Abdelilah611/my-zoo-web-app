@@ -5,7 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Service;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ServiceCrudController extends AbstractCrudController
@@ -20,7 +20,9 @@ class ServiceCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('label'),
-            TextEditorField::new('description'),
+            TextField::new('textBtn'),
+            TextareaField::new('description'),
+            TextareaField::new('longDescription'),
         ];
     }
 }

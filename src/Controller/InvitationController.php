@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Invitation;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\OpeningHourRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,11 +22,11 @@ class InvitationController extends AbstractController
     }
 
     #[Route('/invitation/{uuid}', name: 'app_invitation')]
-    public function index(Invitation $invitation, Request $request): Response
+    public function index(Invitation $invitation, Request $request, OpeningHourRepository $openingHourRepository): Response
     {
         // If the invitation has already been used, redirect to the login page
         if ($invitation->getTheUser()) {
-            return $this->redirectToRoute('admin'); // Change this to login route later
+            return $this->redirectToRoute('app_login');
         }
 
         $user = new User();
@@ -49,7 +50,7 @@ class InvitationController extends AbstractController
             $this->entityManager->flush();
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('app_profile_show', ['profileNumber' => 'EMP-'.$user->getId()]);
         }
 
         $page_name = 'invitation';
@@ -57,6 +58,7 @@ class InvitationController extends AbstractController
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form,
             'page_name' => $page_name,
+            'openingHours' => $openingHourRepository->getSortedOpeningHours(),
         ]);
     }
 }

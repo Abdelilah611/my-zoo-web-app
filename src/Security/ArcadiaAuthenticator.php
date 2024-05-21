@@ -58,7 +58,7 @@ class ArcadiaAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('app_profile'));
+        return new RedirectResponse($this->urlGenerator->generate('app_profile_show', ['profileNumber' => 'EMP-'.(new \ReflectionClass($token->getUser()))->getMethod('getId')->invoke($token->getUser())]));
     }
 
     protected function getLoginUrl(Request $request): string
