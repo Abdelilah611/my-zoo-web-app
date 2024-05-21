@@ -16,8 +16,7 @@ class AddReviewController extends AbstractController
     public function addReview(
         Request $request,
         EntityManagerInterface $entityManager
-    ): Response
-    {
+    ): Response {
         $review = new Review();
         $review->setPseudo($request->get('firstname').' '.$request->get('lastname'));
         $review->setComment($request->get('review'));
