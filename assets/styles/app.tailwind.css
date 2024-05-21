@@ -634,10 +634,6 @@ video {
   display: flex;
 }
 
-.table {
-  display: table;
-}
-
 .hidden {
   display: none;
 }
@@ -1448,10 +1444,6 @@ video {
 
     See https://stackoverflow.com/a/76207141.
   */
-
-.\[a-zA-Z\:\\-\\\.\] {
-  a-z-a--z: \-\.;
-}
 
 .placeholder\:text-base::-moz-placeholder {
   font-size: 1rem;
