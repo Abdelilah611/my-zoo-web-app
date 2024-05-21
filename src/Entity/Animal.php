@@ -54,6 +54,9 @@ class Animal
     #[ORM\OneToMany(targetEntity: VeterinaryReport::class, mappedBy: 'animal')]
     private Collection $vetReport;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $presentation = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -225,5 +228,17 @@ class Animal
     public function __toString(): string
     {
         return $this->getName().' - '.$this->getRace();
+    }
+
+    public function getPresentation(): ?string
+    {
+        return $this->presentation;
+    }
+
+    public function setPresentation(string $presentation): static
+    {
+        $this->presentation = $presentation;
+
+        return $this;
     }
 }
