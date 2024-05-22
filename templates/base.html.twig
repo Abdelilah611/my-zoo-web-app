@@ -26,14 +26,14 @@
     </head>
 
     <body id="top" class="bg-myWhite font-body text-myBlack text-base tracking-wider md:text-xl md:tracking-[wide]">
-        {% if page_name not in ['login', 'profile'] %}
+        {% if page_name not in ['login', 'profile', 'contact'] %}
             {% include 'components/_header.html.twig' %}
         {% endif %}
         
         {% block body %}{% endblock %}
 
         <footer>
-            {% if page_name not in ['login', 'profile'] %}
+            {% if page_name not in ['login', 'profile', 'contact'] %}
                 {% include 'components/_footer.html.twig' %}
             {% endif %}
         </footer>
